@@ -25,7 +25,7 @@ stages:
     jobs:
      - job: Build_Stage
        steps:
-         - script: | 
-             - docker version
-             - docker build -t nginx:v1 .                      
+         - script:  
+              docker version
+              docker build -t nginx:v1 .                      
 
