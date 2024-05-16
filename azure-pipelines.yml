@@ -14,5 +14,11 @@ stages:
      - job: Test_Stage
        steps:
        - script: 
-          echo "Hello From Test stage"          
+          echo "Hello From Test stage"
+  - stage:
+    jobs:
+    - job: DeployStage
+      steps:
+      - script: 
+         echo "Hello from Deploy Stage"                 
 
