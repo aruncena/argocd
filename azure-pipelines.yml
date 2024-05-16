@@ -3,19 +3,19 @@ trigger:
 pool:
  name: 'local'
 stages:
-  - stage:
+  - stage: Build
     jobs:
     - job: Build_Stage
       steps:
        - script:
            echo "Hello From Build Stage"
-  - stage:
+  - stage: Test
     jobs:
      - job: Test_Stage
        steps:
        - script: 
           echo "Hello From Test stage"
-  - stage:
+  - stage: Deploy
     jobs:
     - job: DeployStage
       steps:
