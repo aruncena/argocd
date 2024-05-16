@@ -1,5 +1,6 @@
 trigger:
- - master
+- master
+
 pool:
  name: 'local'
  demands:
@@ -28,5 +29,16 @@ stages:
      - job: Build_Stage
        steps:
          - script:  
-              docker build -t nginx:v1 .                      
-
+              docker build -t nginx:v1 .  
+              docker tag nginx:v1  nginx:latest 861923434973.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest                   
+  - stage: ECRPush
+    jobs:
+      - job: 
+        steps:
+        - task: ECRPushImage@1
+          inputs:
+            regionName: 'ap-south-1'
+            imageSource: 'imagename'
+            sourceImageName: 'nginx'
+            repositoryName: 'nginx:latest 861923434973.dkr.ecr.ap-south-1.amazonaws.com'
+            removeDockerImage: true
