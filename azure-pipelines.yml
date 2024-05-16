@@ -3,7 +3,7 @@ trigger:
 pool:
  name: 'local'
  demands:
-      - Agent.Name -equals amazonlinux'
+      - Agent.Name -equals amazonlinux
 stages:
   - stage: Build
     jobs:
