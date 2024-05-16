@@ -2,6 +2,7 @@ trigger:
  - master
 pool:
  name: 'local'
+ vmImage: 'amazonlinux'
 stages:
   - stage: Build
     jobs:
