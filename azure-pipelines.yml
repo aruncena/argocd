@@ -2,9 +2,17 @@ trigger:
  - master
 pool:
  name: 'local'
-steps:
-  - script:
-     echo "Hello From DevOps"
-  - script: 
-      echo "Hello from 2nd script"   
+stages:
+  - stage:
+    jobs:
+    - job: Build_Stage
+      steps:
+       - script:
+           echo "Hello From Build Stage"
+  - stage:
+    jobs:
+     - job: Test_Stage
+       steps:
+       - script: 
+          echo "Hello From Test stage"          
 
