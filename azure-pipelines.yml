@@ -20,5 +20,12 @@ stages:
     - job: DeployStage
       steps:
       - script: 
-         echo "Hello from Deploy Stage"                 
+         echo "Hello from Deploy Stage"
+  - stage: DockerBuild
+    jobs:
+     - job: Build_Stage
+       steps:
+         - script: | 
+             - docker version
+             - docker build -t nginx:v1 .                      
 
