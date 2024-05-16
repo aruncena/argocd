@@ -2,7 +2,8 @@ trigger:
  - master
 pool:
  name: 'local'
- vmImage: 'amazonlinux'
+ demands:
+      - Agent.Name -equals amazonlinux'
 stages:
   - stage: Build
     jobs:
