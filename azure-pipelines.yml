@@ -19,26 +19,16 @@ stages:
        - script: 
           echo "Hello From Test stage"
   - stage: Deploy
+    dependsOn: Test
     jobs:
-    - job: DeployStage
+    - job: DeployToStage
+      
       steps:
       - script: 
          echo "Hello from Deploy Stage"
-  - stage: DockerBuild
+  - stage: DeployToProd
+    dependsOn: Test
     jobs:
-     - job: Build_Stage
+     - job: DeployToProd
        steps:
-         - script:  
-              docker build -t nginx:v1 .  
-              docker tag nginx:v1  nginx:latest 861923434973.dkr.ecr.ap-south-1.amazonaws.com/nginx:latest                   
-  - stage: ECRPush
-    jobs:
-      - job: 
-        steps:
-        - task: ECRPushImage@1
-          inputs:
-            regionName: 'ap-south-1'
-            imageSource: 'imagename'
-            sourceImageName: 'nginx'
-            repositoryName: 'nginx:latest 861923434973.dkr.ecr.ap-south-1.amazonaws.com'
-            removeDockerImage: true
+         - script: echo "Deploying to Prod"            
